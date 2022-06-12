@@ -1,19 +1,35 @@
+import { Text, View } from 'react-native';
+import type { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { View, Text } from 'react-native';
+import { RectButton, ScrollView } from 'react-native-gesture-handler';
 
 import { RootStackParamList } from '../navigation/Navigation';
 
-type HomeScreenProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
+export const menuList = [
+  {
+    screen: 'PanGesture',
+    title: '🤲 PanGesture',
+  },
+  {
+    screen: 'Transitions',
+    title: '🦖 Transitions',
+  },
+] as const;
 
 export const HomeScreen = () => {
-  const navigation = useNavigation<HomeScreenProp>();
+  const { navigate } = useNavigation<StackNavigationProp<RootStackParamList, 'Home'>>();
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      {/* <Box /> */}
-      <Text onPress={() => navigation.navigate('PanGesture')}>PanGesture</Text>
-      <Text onPress={() => navigation.navigate('Transitions')}>Transitions</Text>
-    </View>
+    <ScrollView
+      style={{ backgroundColor: '#d5e5ff' }}
+      contentContainerStyle={{ paddingBottom: 32 }}
+    >
+      {menuList.map((thumbnail) => (
+        <RectButton key={thumbnail.screen} onPress={() => navigate(thumbnail.screen)}>
+          <View className="bg-white p-8 border-solid border-b-2 border-gray-600">
+            <Text className="text-lg">{thumbnail.title}</Text>
+          </View>
+        </RectButton>
+      ))}
+    </ScrollView>
   );
 };
