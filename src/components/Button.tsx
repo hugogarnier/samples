@@ -17,7 +17,7 @@ export const Button = ({ label, variant, onPress }: ButtonProps) => {
         }
         accessible
       >
-        <View className="justify-center items-center p-2">
+        <View className="justify-center items-center p-0">
           <Text className="text-2xl dark:text-black text-white">{label}</Text>
         </View>
       </SafeAreaView>

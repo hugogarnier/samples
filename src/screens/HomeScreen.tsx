@@ -14,6 +14,10 @@ export const menuList = [
     screen: 'Transitions',
     title: '🦖 Transitions',
   },
+  {
+    screen: 'Animations',
+    title: '🌖 Animations',
+  },
 ] as const;
 
 export const HomeScreen = () => {
