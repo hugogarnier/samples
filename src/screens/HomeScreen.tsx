@@ -18,6 +18,10 @@ export const menuList = [
     screen: 'Animations',
     title: '🌖 Animations',
   },
+  {
+    screen: 'CircularSlider',
+    title: '⭕️ Circular Slider',
+  },
 ] as const;
 
 export const HomeScreen = () => {
